@@ -2,6 +2,8 @@ import Brigadier from 'node-brigadier'
 import Discord from 'discord.js'
 import dotenv from 'dotenv'
 
+const PREFIX = '!'
+
 dotenv.config()
 
 const client: Discord.Client = new Discord.Client()
@@ -11,8 +13,6 @@ export const dispatcher: Brigadier.CommandDispatcher<Discord.Message> = new Brig
 
 // import all the commands here, this must be updated every time you add a new command
 import './commands/ping'
-
-const PREFIX = '!'
 
 client.on('message', async(message: Discord.Message) => {
 	// the author can't be a bot
