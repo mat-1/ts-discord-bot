@@ -1,0 +1,24 @@
+{
+  "name": "ts-discord-bot",
+  "version": "0.0.1",
+  "description": "A Discord bot in TypeScript that uses Mojang's Brigadier",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mat-1/ts-discord-bot.git"
+  },
+  "author": "mat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mat-1/ts-discord-bot/issues"
+  },
+  "homepage": "https://github.com/mat-1/ts-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^9.0.0",
+    "node-brigadier": "github:mat-1/brigadier"
+  }
+}
