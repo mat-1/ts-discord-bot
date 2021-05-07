@@ -12,7 +12,6 @@ export class UserArgument implements ArgumentType<Discord.User> {
 	}
 
 	parse(reader: StringReader) {
-		console.log('parsing')
 		let nextWord: string = reader.getString().substring(reader.getCursor())
 
 		// remove the stuff around mentions so it's just the id
@@ -91,4 +90,5 @@ export class UserArgument implements ArgumentType<Discord.User> {
 // import all the commands here, this must be updated every time you add a new command
 import './commands/ping'
 import './commands/debugmember'
+import './commands/help'
 

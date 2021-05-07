@@ -8,8 +8,9 @@ const PREFIX = '!'
 
 import './database'
 
-
-export const client: Discord.Client = new Discord.Client()
+export const client: Discord.Client = new Discord.Client({
+	intents: Discord.Intents.ALL &~ Discord.Intents.FLAGS.GUILD_PRESENCES
+})
 
 /** User ids mapped to the last time they sent a message */
 export let recentUsers: { [ key: string ]: number } = {}

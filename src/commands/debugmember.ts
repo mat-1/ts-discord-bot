@@ -8,9 +8,9 @@ dispatcher.register(
 		.executes(async (context) => {
 			const message = context.getSource()
 			const member: Discord.User = context.getArgument('member')
-			await message.channel.send(new MessageEmbed({
+			await message.reply(new MessageEmbed({
 				description: `Found **${member.tag}**`
-			}))
+			}), { allowedMentions: { users: [] } })
 			return 0
 		})
 	)
