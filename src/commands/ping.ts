@@ -1,5 +1,5 @@
 import { literal } from 'node-brigadier'
-import { dispatcher } from '../index'
+import { dispatcher } from '../commands'
 import Discord from 'discord.js'
 
 dispatcher.register(
