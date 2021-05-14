@@ -1,15 +1,8 @@
 import Brigadier, { ArgumentType, StringReader, Suggestions } from 'node-brigadier'
-import { client } from '.'
+import { client, PREFIX, recentUsers } from '..'
 import Discord from 'discord.js'
 
-// if you want to change the bot's prefix, change this value
-const PREFIX = '!'
-
 export const dispatcher: Brigadier.CommandDispatcher<Discord.Message> = new Brigadier.CommandDispatcher()
-
-/** User ids mapped to the last time they sent a message */
-export let recentUsers: { [ key: string ]: number } = {}
-
 
 export class UserArgument implements ArgumentType<Discord.User> {
 	id: string
@@ -94,6 +87,7 @@ export class UserArgument implements ArgumentType<Discord.User> {
 	}
 }
 
+
 client.on('message', async(message: Discord.Message) => {
 	recentUsers[message.author.id] = Date.now()
 
@@ -122,22 +116,9 @@ client.on('message', async(message: Discord.Message) => {
 	}
 })
 
-/** Remove users that haven't talked for an hour from `recentUsers` */
-function flushRecentUsers() {
-	const cutoff = Date.now() - (60 * 60 * 1000)
-	for (const [ userId, lastMessageDate ] of Object.entries(recentUsers)) {
-		if (lastMessageDate < cutoff) {
-			delete recentUsers[userId]
-		}
-	}
-}
-
-// flush recent users every minute
-setInterval(flushRecentUsers, 60 * 1000)
-
 
 // import all the commands here, this must be updated every time you add a new command
-import './commands/ping'
-import './commands/debugmember'
-import './commands/help'
+import '../commands/ping'
+import '../commands/debugmember'
+import '../commands/help'
 
